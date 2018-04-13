@@ -42,7 +42,7 @@ object Utils extends JsonSpanProtocol {
   //                   2B    5E   7G
   //                  /
   //                3C
-  def getSpanListWith4Nodes(): List[Span] = {
+  def getSpanListWith5Nodes(): List[Span] = {
     val span = Utils.spanFromFile(filename1)
 
     val span01 = span.copy(startTime = 1, operationName = "A", spanId = "1", parentId = "0")
@@ -74,4 +74,11 @@ object Utils extends JsonSpanProtocol {
     //      spanList.foreach(s => println(s"${s.startTime}: ${s.operationName} : ${s.spanId} : ${s.parentId}"))
     spanList
   }
+}
+
+object App extends App with JsonSpanProtocol {
+  import spray.json._
+
+  val list: List[Span] = Utils.getSpanListWith5Nodes()
+  println(TreeBuilder.build(list).toJson)
 }
