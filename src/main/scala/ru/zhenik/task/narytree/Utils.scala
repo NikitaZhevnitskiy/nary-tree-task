@@ -56,4 +56,22 @@ object Utils extends JsonSpanProtocol {
     //      spanList.foreach(s => println(s"${s.startTime}: ${s.operationName} : ${s.spanId} : ${s.parentId}"))
     spanList
   }
+
+  //                      1A
+  //                     /
+  //                   2B
+  //                  /
+  //                3C
+  def getSpanListWith3Nodes(): List[Span] = {
+    val span = Utils.spanFromFile(filename1)
+
+    val span01 = span.copy(startTime = 1, operationName = "A", spanId = "1", parentId = "0")
+    val span11 = span.copy(startTime = 2, operationName = "B", spanId = "2", parentId = "1")
+    val span21 = span.copy(startTime = 3, operationName = "C", spanId = "3", parentId = "2")
+
+    val spanList = List(span21, span11, span01)
+    //      println(s"startTime : operationName : spanId : parentId")
+    //      spanList.foreach(s => println(s"${s.startTime}: ${s.operationName} : ${s.spanId} : ${s.parentId}"))
+    spanList
+  }
 }
