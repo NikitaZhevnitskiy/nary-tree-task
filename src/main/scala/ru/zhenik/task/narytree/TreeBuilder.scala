@@ -2,7 +2,8 @@ package ru.zhenik.task.narytree
 
 
 object TreeBuilder {
-def build(spans: List[Span]): SpanTree = {
+
+  def build(spans: List[Span]): SpanTree = {
     val rootId = "0"
     // with validation
     if (spans.isEmpty) throw new IllegalArgumentException("List is empty")
@@ -50,5 +51,7 @@ def build(spans: List[Span]): SpanTree = {
       .foreach(t => newList = newList ++ getSequence(t, list))
     newList
   }
+
 }
+
 
