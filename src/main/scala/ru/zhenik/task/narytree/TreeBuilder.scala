@@ -83,5 +83,7 @@ object TreeBuilder {
       .foreach(t => newList = newList ++ getSequence(t, list))
     newList
   }
+
 }
+
 
